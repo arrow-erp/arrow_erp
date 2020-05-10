@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'arrow-erp';
+ headerMenuData =  [
+    { label: 'Students List', id: 'studentsList' },
+    { label: 'Faculties List', id: 'facultiesList' },
+    { label: 'Courses List', id: 'coursesList' },
+    { label: 'Batches List', id: 'batchesList' }
+  ];
 }

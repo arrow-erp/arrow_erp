@@ -1,0 +1,123 @@
+//colors
+$color_shark_approx: #292c2f;
+$white: #fff;
+$color_fuchsia_pink_approx: #bc40df;
+$color_calypso_approx: #2a6a92;
+$color_limed_spruce_approx: #3a3c3e;
+$color_galliano_approx: #e9ac09;
+
+//fonts
+$font_0: Cookie;
+$font_1: Arial;
+$font_2: Helvetica;
+$font_3: sans-serif;
+
+.custom-header {
+	background: $color_shark_approx;
+	padding: 20px 40px;
+	//Instead of the line below you could use @include box-sizing($bs)
+	box-sizing: border-box;
+	border: 0;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 0;
+	.badge {
+		position: absolute;
+		top: 4px;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 2px;
+		font-size: 11px;
+		color: $white;
+		background-color: $color_calypso_approx;
+		padding: 2px 4px;
+		font-weight: normal;
+	}
+	a.navbar-brand {
+		color: $white;
+		font: normal 28px $font_0, $font_1, $font_2, $font_3;
+		line-height: 0.5;
+		margin-right: 40px;
+		background: $color_shark_approx;
+		span {
+			color: $color_fuchsia_pink_approx;
+		}
+	}
+	ul.nav.navbar-nav {
+		&.links li a {
+			font: 14px $font_1, $font_2, $font_3;
+			opacity: 0.9;
+			text-decoration: none;
+			color: $white;
+			background: $color_shark_approx;
+			border: 0;
+		}
+		li a:hover {
+			opacity: 1;
+		}
+		&.navbar-right .dropdown li a {
+			font: bold 13px $font_1, $font_2, $font_3;
+		}
+	}
+	li.dropdown {
+		background: $color_limed_spruce_approx;
+		&.open {
+			background: $color_limed_spruce_approx;
+		}
+		.dropdown-toggle {
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 2px;
+			color: $white;
+			padding: 8px 14px;
+			background: $color_limed_spruce_approx;
+			opacity: 0.9;
+			border: 0;
+			margin: 0;
+			&:focus {
+				background: $color_limed_spruce_approx;
+				color: $white;
+			}
+			&:hover {
+				background: $color_limed_spruce_approx;
+				color: $white;
+			}
+			&:active {
+				background: $color_limed_spruce_approx;
+				color: $white;
+			}
+		}
+	}
+	.dropdown ul {
+		background-color: $color_limed_spruce_approx;
+		border: 0;
+		min-width: 140px;
+		li {
+			background-color: $color_limed_spruce_approx;
+			padding: 7px;
+			text-align: center;
+			a {
+				background: $color_limed_spruce_approx;
+				//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+				border-radius: 2px;
+				color: $white;
+				padding: 0;
+				&:active {
+					background: $color_limed_spruce_approx;
+				}
+				&:focus {
+					background: $color_limed_spruce_approx;
+				}
+				&:hover {
+					background: $color_limed_spruce_approx;
+				}
+			}
+			&.active a {
+				color: $color_galliano_approx !important;
+			}
+		}
+	}
+}
+img.dropdown-image {
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 50%;
+	width: 32px;
+	margin-left: 10px;
+}
