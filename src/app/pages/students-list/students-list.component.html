@@ -1,0 +1,20 @@
+<div class="container">
+
+    <div *ngIf="auth.user | async as user; else showLogin">
+        <h1>Hello {{ user.displayName }}!</h1>
+        <pre>{{user.providerData|json}}</pre>
+        <button (click)="logout()">Logout</button>
+        <img [src]="user.providerData[0].photoURL">
+      </div>
+      <ng-template #showLogin>
+        <p>Please login.</p>
+        <button (click)="login()">Login with Google</button>
+      </ng-template>
+
+    <ul class="list-group mt-4">
+        <li *ngFor="let student of data" class="list-group-item">
+            {{student|json}}
+        </li>
+    </ul>
+
+</div>

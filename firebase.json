@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "arrow-erp",
+      "public": "dist/arrow-erp",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
