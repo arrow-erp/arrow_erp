@@ -1,20 +1,183 @@
 <div class="container">
+  <h4 class="mt-4">
+    Arrow Students List
+    <button class="btn btn-primary float-right" (click)="studentDetailsModal.show()">Add New Student</button>
+  </h4>
+  <div class="table-responsive mt-4">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">Student Name</th>
+        <th scope="col">Father Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date Of Joining</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="studentList | async as studentsList">
+      <tr *ngFor="let student of studentsList">
+        <td scope="col">{{student.studentName}}</td>
+        <td scope="col">{{student.fatherName}}</td>
+        <td scope="col">{{student.email}}</td>
+        <td scope="col">{{student.dateOfJoining}}</td>
+        <td scope="col">{{student.phoneNumber}}</td>
+        <td scope="col">{{student.gender}}</td>
+        <td scope="col">
+          <button class="btn btn-primary btn-sm mr-3"><i class="fa fa-edit"></i></button>
+          <button class="btn btn-danger btn-sm" (click)="deleteDetails(student)"><i class="fa fa-trash"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div *ngIf="auth.user | async as user; else showLogin">
-        <h1>Hello {{ user.displayName }}!</h1>
-        <pre>{{user.providerData|json}}</pre>
-        <button (click)="logout()">Logout</button>
-        <img [src]="user.providerData[0].photoURL">
+  <div bsModal [config]="{ignoreBackdropClick:true,keyboard:false}"
+       #studentDetailsModal="bs-modal" class="modal fade"
+       tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Add New Student Details</h4>
+          <button type="button" class="close pull-right" (click)="studentDetailsModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" #arrowForm="ngForm">
+            <div class="form-row">
+
+              <!--StudentName-->
+              <div class="form-group col-md-6">
+                <label>Student Name</label>
+                <input name="studentName" ngModel type="text" placeholder="Student Name" class="form-control">
+              </div>
+
+              <!--fatherName-->
+              <div class="form-group col-md-6">
+                <label>Father Name</label>
+                <input type="text" name="fatherName" ngModel placeholder="Father Name" class="form-control">
+              </div>
+
+              <!--referenceName-->
+              <div class="form-group col-md-6">
+                <label>Reference Name</label>
+                <input name="referenceName" ngModel type="text" placeholder="Ref Name" class="form-control" >
+              </div>
+
+              <!--locationName-->
+              <div class="form-group col-md-6">
+                <label>Location</label>
+                <input name="locationName" ngModel type="text" placeholder="Location Name" class="form-control">
+              </div>
+
+              <!--email-->
+              <div class="form-group col-md-6">
+                <label>Email <span class="font-weight-bold text-danger">*</span> </label>
+                <input name="email" required ngModel email type="email" placeholder="Email" class="form-control">
+              </div>
+
+              <!--dateOfBirth-->
+              <div class="form-group col-md-6">
+                <label>Date of Birth <span class="font-weight-bold text-danger">*</span></label>
+                <div>
+                  <input name="dateOfBirth" required ngModel type="date" class="form-control">
+                </div>
+              </div>
+
+              <!--dateOfJoining-->
+              <div class="form-group col-md-6">
+                <label>Date of Joining <span class="font-weight-bold text-danger">*</span></label>
+                <input name="dateOfJoining" required ngModel type="date" class="form-control">
+              </div>
+
+              <!--timeSlot-->
+              <div class="form-group col-md-6">
+                <label>Time Slot</label>
+                <input name="timeSlot" ngModel type="time" class="form-control" name="appt">
+              </div>
+
+              <!--phoneNumber-->
+              <div class="form-group col-md-6">
+                <label>Phone number </label>
+                <input name="phoneNumber" ngModel type="phoneNumber" placeholder="Phone number" class="form-control">
+                <span class="help-block">Your phone number won't be disclosed anywhere </span>
+              </div>
+
+              <!--selectCourse-->
+              <div class="form-group col-md-6">
+                <label>Select Course</label>
+                <select class="form-control" ngModel name="selectCourse">
+                  <option>Maya</option>
+                  <option>Vfx</option>
+                  <option>UX Designing</option>
+                  <option>Ui development</option>
+                </select>
+              </div>
+
+              <!--courseDuration-->
+              <div class="form-group col-md-6">
+                <label>Course Duration</label>
+                <select class="form-control" ngModel name="courseDuration">
+                  <option value="">Select...</option>
+                  <option value="1-Month">1 Month</option>
+                  <option value="2-Month">2 Month</option>
+                  <option value="3-Month">3 Month</option>
+                  <option value="4-Month">4 Month</option>
+                </select>
+              </div>
+
+              <!--Gender-->
+              <div class="form-group col-md-6">
+                <label>Gender <span class="font-weight-bold text-danger">*</span></label>
+                <select class="form-control" required ngModel name="courseDuration">
+                  <option value="">Select...</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                </select>
+              </div>
+
+              <!--address-->
+              <div class="form-group col-md-6">
+                <label>Address</label>
+                <textarea name="address" ngModel class="form-control" rows="3"></textarea>
+              </div>
+
+              <div class="col-12">
+                <button [disabled]="arrowForm.invalid" type="submit" (click)="saveDetails(arrowForm.value, studentDetailsModal)" class="float-right btn btn-primary">Register</button>
+                <p class="text-danger float-left">* please provide all required fields</p>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-      <ng-template #showLogin>
-        <p>Please login.</p>
-        <button (click)="login()">Login with Google</button>
-      </ng-template>
+    </div>
+  </div>
 
-    <ul class="list-group mt-4">
-        <li *ngFor="let student of data" class="list-group-item">
-            {{student|json}}
-        </li>
-    </ul>
+  <div *ngIf="showLoader" class="fixed-top" style="width: 100%;height: 100%;background-color: rgba(0,0,0,0.5);z-index: 200000000000;">
+    <label class="text-white" style="position: absolute;top: 50%;width: 100%;text-align: center;">Please wait...</label>
+  </div>
+
+
+  <!-- /form -->
+
+  <!--<div *ngIf="auth.user | async as user; else showLogin">
+    <h1>Hello {{ user.displayName }}!</h1>
+    <pre>{{user.providerData|json}}</pre>
+    <button (click)="logout()">Logout</button>
+    <img [src]="user.providerData[0].photoURL">
+  </div>
+  <ng-template #showLogin>
+    <p>Please login.</p>
+    <button (click)="login()">Login with Google</button>
+  </ng-template>
+
+  <ul class="list-group mt-4">
+    <li *ngFor="let student of data"
+        class="list-group-item">
+      {{student|json}}
+    </li>
+  </ul>-->
 
 </div>
