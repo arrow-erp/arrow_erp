@@ -11,6 +11,7 @@ import {environment} from 'src/environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {AccordionModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
