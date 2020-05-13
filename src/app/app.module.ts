@@ -12,12 +12,14 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {AccordionModule} from 'ngx-bootstrap';
+import { FacultiesListComponent } from './pages/faculties-list/faculties-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    StudentsListComponent
+    StudentsListComponent,
+    FacultiesListComponent
   ],
   imports: [
     BrowserModule,

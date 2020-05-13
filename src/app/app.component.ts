@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
- headerMenuData =  [
-    { label: 'Students List', id: 'studentsList' },
-    { label: 'Faculties List', id: 'facultiesList' },
-    { label: 'Courses List', id: 'coursesList' },
-    { label: 'Batches List', id: 'batchesList' }
+  headerMenuData = [
+    {label: 'Students List', id: 'studentsList', route: 'students-list'},
+    {label: 'Faculties List', id: 'facultiesList', route: 'faculties-list'},
+    /*{label: 'Courses List', id: 'coursesList', route: ''},
+    {label: 'Batches List', id: 'batchesList', route: ''}*/
   ];
 }

@@ -18,24 +18,24 @@ export class StudentsListComponent {
   readonly EDIT_FORM_TITLE = 'Update Student Details';
   formTitle = this.ADD_FORM_TITLE;
   editStudentId = '';
-  private itemsCollection: AngularFirestoreCollection<StudentDetailsInterface>;
+  private studentDetailsCollection: AngularFirestoreCollection<StudentDetailsInterface>;
   studentList: Observable<StudentDetailsInterface[]>;
 
   constructor(
     private afs: AngularFirestore
   ) {
-    this.itemsCollection = afs.collection<StudentDetailsInterface>('studentList');
-    this.studentList = this.itemsCollection.valueChanges();
+    this.studentDetailsCollection = afs.collection<StudentDetailsInterface>('studentList');
+    this.studentList = this.studentDetailsCollection.valueChanges();
   }
 
   async saveDetails(studentDetails: StudentDetailsInterface, studentDetailsModal, arrowForm: NgForm) {
     if (this.formTitle === this.ADD_FORM_TITLE) {
       this.showLoader = true;
-      const res = await this.itemsCollection.add({
+      const res = await this.studentDetailsCollection.add({
         ...studentDetails,
         createdOn: firebase.firestore.FieldValue.serverTimestamp()
       });
-      const docRef = await this.itemsCollection.doc(res.id);
+      const docRef = await this.studentDetailsCollection.doc(res.id);
       const doc = await docRef.get().toPromise();
       await docRef.set({...doc.data(), id: res.id, transactionId: res.id});
       arrowForm.resetForm();
@@ -45,7 +45,7 @@ export class StudentsListComponent {
     else {
       if (this.editStudentId.trim().length > 0) {
         this.showLoader = true;
-        await this.itemsCollection.doc(this.editStudentId).set({...studentDetails, id: this.editStudentId});
+        await this.studentDetailsCollection.doc(this.editStudentId).set({...studentDetails, id: this.editStudentId});
         arrowForm.resetForm();
         studentDetailsModal.hide();
         this.showLoader = false;
@@ -58,7 +58,7 @@ export class StudentsListComponent {
     const isConfirmed = confirm('Are you sure! Do you want to delete?');
     if (isConfirmed) {
       this.showLoader = true;
-      await this.itemsCollection.doc(student.id).delete();
+      await this.studentDetailsCollection.doc(student.id).delete();
       this.showLoader = false;
     }
   }

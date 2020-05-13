@@ -1,35 +1,35 @@
 <div class="container">
-  <h4 class="mt-4">
-    Arrow Students List
+  <h4>
+    Arrow Faculties List
     <button class="btn btn-primary float-right"
-            (click)="addDetails(studentDetailsModal,arrowForm)">
-      Add Student
+            (click)="addDetails(facultyDetailsModal,arrowForm)">
+      Add Faculty
     </button>
     <div class="clearfix"></div>
   </h4>
 
   <ul class="list-group"
-      *ngIf="studentList | async as studentsList">
+      *ngIf="facultyList | async as facultysList">
     <li class="list-group-item mb-1"
-        *ngFor="let student of studentsList">
+        *ngFor="let faculty of facultysList">
       <div class="row">
         <div class="col-md-4 col-xs-12 col-sm-12 text-truncate">
-          <i [class.fa-male]="student.gender=='male'" [class.fa-female]="student.gender=='female'" class="fa fa-female"></i>
-          {{student.studentName}} - {{student.gender}}
+          <i [class.fa-male]="faculty.gender=='male'" [class.fa-female]="faculty.gender=='female'" class="fa fa-female"></i>
+          {{faculty.facultyName}} - {{faculty.gender}}
         </div>
         <div class="col-md-4 col-xs-12 col-sm-12 text-truncate">
-          <a [href]="'tel:'+student.phoneNumber"><i class="fa fa-phone"></i> {{student.phoneNumber}}</a>
+          <a [href]="'tel:'+faculty.phoneNumber"><i class="fa fa-phone"></i> {{faculty.phoneNumber}}</a>
         </div>
         <div class="col-md-4 col-xs-12 col-sm-12 text-truncate">
-          <a [href]="'mailto:'+student.email"><i class="fa fa-envelope"></i> {{student.email}}</a>
+          <a [href]="'mailto:'+faculty.email"><i class="fa fa-envelope"></i> {{faculty.email}}</a>
         </div>
         <div style="position: absolute;top: 0.5rem;right:  0.5rem;">
           <button class="btn btn-primary btn-sm mr-3"
-                  (click)="editDetails(student,studentDetailsModal,arrowForm)">
+                  (click)="editDetails(faculty,facultyDetailsModal,arrowForm)">
             <i class="fa fa-edit"></i>
           </button>
           <button class="btn btn-danger btn-sm"
-                  (click)="deleteDetails(student)">
+                  (click)="deleteDetails(faculty)">
             <i class="fa fa-trash"></i>
           </button>
         </div>
@@ -39,7 +39,7 @@
 
   <div bsModal
        [config]="{ignoreBackdropClick:true,keyboard:false}"
-       #studentDetailsModal="bs-modal"
+       #facultyDetailsModal="bs-modal"
        class="modal fade"
        tabindex="-1"
        role="dialog"
@@ -50,7 +50,7 @@
           <h4 class="modal-title pull-left">{{formTitle}}</h4>
           <button type="button"
                   class="close pull-right"
-                  (click)="studentDetailsModal.hide()"
+                  (click)="facultyDetailsModal.hide()"
                   aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -61,14 +61,14 @@
                 #arrowForm="ngForm">
             <div class="form-row">
 
-              <!--StudentName-->
+              <!--FacultyName-->
               <div class="form-group col-md-6">
-                <label>Student Name</label>
-                <input name="studentName"
+                <label>Faculty Name</label>
+                <input name="facultyName"
                        ngModel
                        autocomplete="off"
                        type="text"
-                       placeholder="Student Name"
+                       placeholder="Faculty Name"
                        class="form-control">
               </div>
 
@@ -221,7 +221,7 @@
               <div class="col-12">
                 <button [disabled]="arrowForm.invalid"
                         type="submit"
-                        (click)="saveDetails(arrowForm.value, studentDetailsModal, arrowForm)"
+                        (click)="saveDetails(arrowForm.value, facultyDetailsModal, arrowForm)"
                         class="float-right btn btn-primary">Save
                 </button>
                 <p class="text-danger float-left">* please provide all required fields</p>
@@ -239,26 +239,4 @@
     <label class="text-white"
            style="position: absolute;top: 50%;width: 100%;text-align: center;">Please wait...</label>
   </div>
-
-
-  <!-- /form -->
-
-  <!--<div *ngIf="auth.user | async as user; else showLogin">
-    <h1>Hello {{ user.displayName }}!</h1>
-    <pre>{{user.providerData|json}}</pre>
-    <button (click)="logout()">Logout</button>
-    <img [src]="user.providerData[0].photoURL">
-  </div>
-  <ng-template #showLogin>
-    <p>Please login.</p>
-    <button (click)="login()">Login with Google</button>
-  </ng-template>
-
-  <ul class="list-group mt-4">
-    <li *ngFor="let student of data"
-        class="list-group-item">
-      {{student|json}}
-    </li>
-  </ul>-->
-
 </div>
