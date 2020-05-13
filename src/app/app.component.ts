@@ -9,7 +9,7 @@ export class AppComponent {
   headerMenuData = [
     {label: 'Students List', id: 'studentsList', route: 'students-list'},
     {label: 'Faculties List', id: 'facultiesList', route: 'faculties-list'},
-    /*{label: 'Courses List', id: 'coursesList', route: ''},
-    {label: 'Batches List', id: 'batchesList', route: ''}*/
+    {label: 'Courses List', id: 'coursesList', route: 'course-list'},
+   /* {label: 'Batches List', id: 'batchesList', route: ''}*/
   ];
 }
