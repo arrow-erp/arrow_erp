@@ -8,7 +8,7 @@ import {Component, OnInit, Input} from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Input() menuData: { label: string, id: string, route?: string }[] = [];
-
+  toggleNavBar = false;
 
   constructor() {
   }
