@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'arrow-header',
@@ -7,10 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() menuData = [];
+  @Input() menuData: { label: string, id: string, route?: string }[] = [];
 
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
