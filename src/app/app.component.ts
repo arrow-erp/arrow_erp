@@ -14,6 +14,7 @@ export class AppComponent {
     {label: 'BATCHES MANAGEMENT', id: 'batchesList', route: 'batches-list'},
     {label: 'FEES COLLECTION', id: 'feesCollection', route: 'fees-collection'},
     {label: 'ACCOUNT MAINTENANCE', id: 'accountMaintenance', route: 'account-maintenance'},
+    {label: 'PRODUCT BACKLOG', id: 'ProductBacklog', route: 'product-backlog'},
   ];
 
   toggleMenu() {

@@ -20,6 +20,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BatchesAllocationComponent } from './components/batches-allocation/batches-allocation.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HamburgerAnimationComponent } from './components/hamburger-animation/hamburger-animation.component';
+import { ProductBacklogComponent } from './pages/product-backlog/product-backlog.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HamburgerAnimationComponent } from './components/hamburger-animation/ha
     DateSuffixPipe,
     BatchesAllocationComponent,
     SideBarComponent,
-    HamburgerAnimationComponent
+    HamburgerAnimationComponent,
+    ProductBacklogComponent
   ],
   imports: [
     BrowserModule,
