@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {NgForm} from '@angular/forms';
 import * as firebase from 'firebase';
 import {ModalDirective} from 'ngx-bootstrap';
-import {CourseDetailsInterface} from './CourseDetails.interface';
+import {CourseDetailsInterface} from '../../interfaces/course-details.interface';
 
 @Component({
   selector: 'arrow-course-list',

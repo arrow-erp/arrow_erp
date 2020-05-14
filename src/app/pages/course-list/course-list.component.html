@@ -1,5 +1,5 @@
-<div class="container">
-  <h4 class="mt-4">
+<div class="container-fluid page">
+  <h4 class="page-title">
     Arrow Courses List
     <button class="btn btn-primary float-right"
             (click)="addDetails(courseDetailsModal,arrowForm)">
@@ -61,9 +61,10 @@
 
               <!--CourseName-->
               <div class="form-group col-md-6">
-                <label>Course Name</label>
+                <label>Course Name <span class="font-weight-bold text-danger">*</span></label>
                 <input name="courseName"
                        ngModel
+                       required
                        autocomplete="off"
                        type="text"
                        placeholder="Course Name"
@@ -72,10 +73,11 @@
 
               <!--courseDuration-->
               <div class="form-group col-md-6">
-                <label>Course Duration in Days</label>
+                <label>Course Duration in Days <span class="font-weight-bold text-danger">*</span></label>
                 <input type="number"
                        name="courseDuration"
                        ngModel
+                       required
                        autocomplete="off"
                        placeholder="Course Duration in Days"
                        class="form-control">

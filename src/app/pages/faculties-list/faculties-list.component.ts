@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {NgForm} from '@angular/forms';
 import * as firebase from 'firebase';
 import {ModalDirective} from 'ngx-bootstrap';
-import {FacultyDetailsInterface} from './FacultyDetails.interface';
+import {FacultyDetailsInterface} from '../../interfaces/faculty-details.interface';
 // faculty
 // Faculty
 @Component({
