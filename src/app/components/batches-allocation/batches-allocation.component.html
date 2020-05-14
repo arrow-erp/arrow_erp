@@ -1,0 +1,15 @@
+<span class="text-muted">Click to Select Batch</span>
+<h6>Total Fee : {{totalFee|currency}}</h6>
+<ul class="list-group m-2" style="max-height: calc(100vh - 325px);overflow-y: auto;" *ngIf="batchList | async as batchesList">
+  <li (click)="toggleSelection(batch)"
+      class="list-group-item mb-2 rounded-0"
+      *ngFor="let batch of batchesList" [class.selected]="isSelected(batch.id)">
+    <div class="row">
+      <div class="col-md-10 col-xs-10 col-sm-10 text-truncate">
+        <label class="m-0 d-block">{{batch.batchName}}</label>
+        <label class="m-0 d-block">{{batch.batchStartDate|date}} {{batch.batchInterval}} at {{batch.batchTime}}</label>
+        <label class="m-0 font-weight-bold d-block">{{batch.fees|currency}}</label>
+      </div>
+    </div>
+  </li>
+</ul>

@@ -1,5 +1,5 @@
-<div class="container">
-  <h4 class="mt-4">
+<div class="container-fluid page">
+  <h4 class="page-title">
     Arrow Students List
     <button class="btn btn-primary float-right"
             (click)="addDetails(studentDetailsModal,arrowForm)">
@@ -8,8 +8,7 @@
     <div class="clearfix"></div>
   </h4>
 
-  <ul class="list-group"
-      *ngIf="studentList | async as studentsList">
+  <ul class="list-group" *ngIf="studentList | async as studentsList">
     <li class="list-group-item mb-1"
         *ngFor="let student of studentsList">
       <div class="row">
@@ -56,182 +55,221 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="form-horizontal"
-                autocomplete="off"
-                #arrowForm="ngForm">
-            <div class="form-row">
+          <tabset>
+            <tab heading="Details"
+                 class="p-3 border border-top-0"
+                 style="overflow-y: auto;max-height: calc(100vh - 350px);min-height: calc(100vh - 230px);">
+              <form class="form-horizontal"
+                    autocomplete="off"
+                    #arrowForm="ngForm">
+                <div class="form-row">
 
-              <!--StudentName-->
-              <div class="form-group col-md-6">
-                <label>Student Name</label>
-                <input name="studentName"
-                       ngModel
-                       autocomplete="off"
-                       type="text"
-                       placeholder="Student Name"
-                       class="form-control">
-              </div>
+                  <!--StudentName-->
+                  <div class="form-group col-md-6">
+                    <label>Student Name</label>
+                    <input name="studentName"
+                           ngModel
+                           autocomplete="off"
+                           type="text"
+                           placeholder="Student Name"
+                           class="form-control">
+                  </div>
 
-              <!--fatherName-->
-              <div class="form-group col-md-6">
-                <label>Father Name</label>
-                <input type="text"
-                       name="fatherName"
-                       ngModel
-                       autocomplete="off"
-                       placeholder="Father Name"
-                       class="form-control">
-              </div>
+                  <!--fatherName-->
+                  <div class="form-group col-md-6">
+                    <label>Father Name</label>
+                    <input type="text"
+                           name="fatherName"
+                           ngModel
+                           autocomplete="off"
+                           placeholder="Father Name"
+                           class="form-control">
+                  </div>
 
-              <!--referenceName-->
-              <div class="form-group col-md-6">
-                <label>Reference Name</label>
-                <input name="referenceName"
-                       ngModel
-                       autocomplete="off"
-                       type="text"
-                       placeholder="Ref Name"
-                       class="form-control">
-              </div>
+                  <!--referenceName-->
+                  <div class="form-group col-md-6">
+                    <label>Reference Name</label>
+                    <input name="referenceName"
+                           ngModel
+                           autocomplete="off"
+                           type="text"
+                           placeholder="Ref Name"
+                           class="form-control">
+                  </div>
 
-              <!--locationName-->
-              <div class="form-group col-md-6">
-                <label>Location</label>
-                <input name="locationName"
-                       ngModel
-                       autocomplete="off"
-                       type="text"
-                       placeholder="Location Name"
-                       class="form-control">
-              </div>
+                  <!--locationName-->
+                  <div class="form-group col-md-6">
+                    <label>Location</label>
+                    <input name="locationName"
+                           ngModel
+                           autocomplete="off"
+                           type="text"
+                           placeholder="Location Name"
+                           class="form-control">
+                  </div>
 
-              <!--email-->
-              <div class="form-group col-md-6">
-                <label>Email <span class="font-weight-bold text-danger">*</span> </label>
-                <input name="email"
-                       required
-                       ngModel
-                       autocomplete="off"
-                       email
-                       type="email"
-                       placeholder="Email"
-                       class="form-control">
-              </div>
+                  <!--email-->
+                  <div class="form-group col-md-6">
+                    <label>Email <span class="font-weight-bold text-danger">*</span> </label>
+                    <input name="email"
+                           required
+                           ngModel
+                           autocomplete="off"
+                           email
+                           type="email"
+                           placeholder="Email"
+                           class="form-control">
+                  </div>
 
-              <!--dateOfBirth-->
-              <div class="form-group col-md-6">
-                <label>Date of Birth <span class="font-weight-bold text-danger">*</span></label>
-                <div>
-                  <input name="dateOfBirth"
-                         required
-                         ngModel
-                         autocomplete="off"
-                         type="date"
-                         class="form-control">
+                  <!--dateOfBirth-->
+                  <div class="form-group col-md-6">
+                    <label>Date of Birth <span class="font-weight-bold text-danger">*</span></label>
+                    <div>
+                      <input name="dateOfBirth"
+                             required
+                             ngModel
+                             autocomplete="off"
+                             type="date"
+                             class="form-control">
+                    </div>
+                  </div>
+
+                  <!--phoneNumber-->
+                  <div class="form-group col-md-6">
+                    <label>Phone number </label>
+                    <input name="phoneNumber"
+                           ngModel
+                           autocomplete="off"
+                           type="tel"
+                           placeholder="Phone number"
+                           class="form-control">
+                    <span class="help-block">Your phone number won't be disclosed anywhere </span>
+                  </div>
+
+                  <!--Gender-->
+                  <div class="form-group col-md-6">
+                    <label>Gender <span class="font-weight-bold text-danger">*</span></label>
+                    <select class="form-control"
+                            required
+                            ngModel
+                            autocomplete="off"
+                            name="gender">
+                      <option value="">Select...</option>
+                      <option value="female">Female</option>
+                      <option value="male">Male</option>
+                    </select>
+                  </div>
+
+                  <!--address-->
+                  <div class="form-group col-md-6">
+                    <label>Address</label>
+                    <textarea name="address"
+                              ngModel
+                              autocomplete="off"
+                              class="form-control"
+                              rows="3"></textarea>
+                  </div>
+
+                  <div class="col-12">
+                    <button [disabled]="arrowForm.invalid"
+                            type="submit"
+                            (click)="saveDetails(arrowForm.value, studentDetailsModal, arrowForm)"
+                            class="float-right btn btn-primary">Save
+                    </button>
+                    <p class="text-danger float-left">* please provide all required fields</p>
+                  </div>
                 </div>
+              </form>
+            </tab>
+            <tab heading="Allocation" class="p-3 border border-top-0"
+                 style="overflow-y: auto;max-height: calc(100vh - 350px);min-height: calc(100vh - 230px);">
+              <arrow-batches-allocation [(selectedBatch)]="selectedBatch" [(totalFee)]="totalFee"></arrow-batches-allocation>
+            </tab>
+            <tab heading="Discounts"
+                 style="overflow-y: auto;max-height: calc(100vh - 350px);min-height: calc(100vh - 230px);">
+
+              <ul class="list-group mt-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Total Fees :
+                  <span #totalFeeSpan [style.width.px]="105" class="badge badge-primary badge-pill pt-2 pb-1 text-left">
+                  ₹ {{totalFee}}
+                  </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Discount :
+                  <span class="badge badge-primary badge-pill">
+                  ₹ <input type="number" [style.width.px]="80" [max]="totalFee" min="0" [(ngModel)]="discount" class="discount-input">
+                  </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Tax :
+                  <span class="badge badge-primary badge-pill">
+                  ₹ <input type="number" [style.width.px]="80" [max]="totalFee" min="0" [(ngModel)]="tax" class="discount-input">
+                  </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <label class="m-0 font-weight-bold">Grand Total Fees :</label>
+                  <span #totalFeeSpan [style.width.px]="105" class="font-weight-bold badge badge-success badge-pill pt-2 pb-2 text-left">
+                  ₹ {{(totalFee+tax-discount)}}
+                  </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center mt-5">
+                  Amount Paid :
+                  <span class="badge badge-primary badge-pill">
+                  ₹ <input type="number" [style.width.px]="80" [max]="totalFee" min="0" [(ngModel)]="amountPaid" class="discount-input">
+                  </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Balance :
+                  <span #totalFeeSpan [style.width.px]="105" class="font-weight-bold badge badge-danger badge-pill pt-2 pb-2 text-left">
+                  ₹ {{((totalFee+tax)-(discount+amountPaid))}}
+                  </span>
+                </li>
+              </ul>
+
+              <div class="text-right">
+                <button class="btn btn-primary mt-3 mr-3" (click)="saveOrder(getOrderToSave(), studentDetailsModal)">SAVE</button>
               </div>
 
-              <!--dateOfJoining-->
-              <div class="form-group col-md-6">
-                <label>Date of Joining <span class="font-weight-bold text-danger">*</span></label>
-                <input name="dateOfJoining"
-                       required
-                       ngModel
-                       autocomplete="off"
-                       type="date"
-                       class="form-control">
-              </div>
+            </tab>
+            <tab heading="Fees History"
+                 style="overflow-y: auto;max-height: calc(100vh - 350px);min-height: calc(100vh - 230px);">
+              <!--{
+                "discount": 0,
+                "tax": 0,
+                "createdOn": {
+                  "seconds": 1589441823,
+                    "nanoseconds": 753000000
+                  },
+              "billAmount": 25000,
+              "transactionId": "OJ6uktnac73KigaJ4NGh",
+              "totalFee": 25000,
+              "studentId": "PkbY5CUDcVyTkUt5EYYF",
+              "id": "OJ6uktnac73KigaJ4NGh"
+              }-->
+              <ul class="list-group mt-4" *ngIf="studentWiseOrdersList | async as studentWiseOrdersList">
+                <li class="list-group-item" *ngFor="let order of studentWiseOrdersList">
+                  <div class="row">
+                    <div class="col-md-6 col-xs-12 col-sm-12 text-truncate">
+                      Order-ID : {{order.id}}
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-12 text-truncate">
+                      Bill Amount : {{order.billAmount}}
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-12 text-truncate">
+                      Date : {{(order.createdOn.seconds*1000)|date}}
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </tab>
+          </tabset>
 
-              <!--timeSlot-->
-              <div class="form-group col-md-6">
-                <label>Time Slot</label>
-                <input name="timeSlot"
-                       ngModel
-                       autocomplete="off"
-                       type="time"
-                       class="form-control"
-                       name="appt">
-              </div>
-
-              <!--phoneNumber-->
-              <div class="form-group col-md-6">
-                <label>Phone number </label>
-                <input name="phoneNumber"
-                       ngModel
-                       autocomplete="off"
-                       type="tel"
-                       placeholder="Phone number"
-                       class="form-control">
-                <span class="help-block">Your phone number won't be disclosed anywhere </span>
-              </div>
-
-              <!--selectCourse-->
-              <div class="form-group col-md-6">
-                <label>Select Course</label>
-                <select class="form-control"
-                        ngModel
-                        autocomplete="off"
-                        name="selectCourse">
-                  <option>Maya</option>
-                  <option>Vfx</option>
-                  <option>UX Designing</option>
-                  <option>Ui development</option>
-                </select>
-              </div>
-
-              <!--courseDuration-->
-              <div class="form-group col-md-6">
-                <label>Course Duration</label>
-                <select class="form-control"
-                        ngModel
-                        autocomplete="off"
-                        name="courseDuration">
-                  <option value="">Select...</option>
-                  <option value="1-Month">1 Month</option>
-                  <option value="2-Month">2 Month</option>
-                  <option value="3-Month">3 Month</option>
-                  <option value="4-Month">4 Month</option>
-                </select>
-              </div>
-
-              <!--Gender-->
-              <div class="form-group col-md-6">
-                <label>Gender <span class="font-weight-bold text-danger">*</span></label>
-                <select class="form-control"
-                        required
-                        ngModel
-                        autocomplete="off"
-                        name="gender">
-                  <option value="">Select...</option>
-                  <option value="female">Female</option>
-                  <option value="male">Male</option>
-                </select>
-              </div>
-
-              <!--address-->
-              <div class="form-group col-md-6">
-                <label>Address</label>
-                <textarea name="address"
-                          ngModel
-                          autocomplete="off"
-                          class="form-control"
-                          rows="3"></textarea>
-              </div>
-
-              <div class="col-12">
-                <button [disabled]="arrowForm.invalid"
-                        type="submit"
-                        (click)="saveDetails(arrowForm.value, studentDetailsModal, arrowForm)"
-                        class="float-right btn btn-primary">Save
-                </button>
-                <p class="text-danger float-left">* please provide all required fields</p>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
     </div>
   </div>
+
 
   <div *ngIf="showLoader"
        class="fixed-top"

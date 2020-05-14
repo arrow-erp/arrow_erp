@@ -1,0 +1,57 @@
+:host {
+  position: relative;
+  top: 0;
+  height: 100vh;
+
+  .main-container {
+    position: relative;
+    float: right;
+    width: calc(100% - 260px);
+    background-color: #f4f3ef;
+    transition: all .5s cubic-bezier(.685, .0473, .346, 1);
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    bottom: 0;
+    width: 260px;
+    left: 0;
+    z-index: 1030;
+    border-right: 1px solid #ddd;
+    background-color: white;
+  }
+
+  arrow-hamburger-animation{
+    display: none !important;
+  }
+
+  @media screen and (max-width: 991px) {
+    .sidebar {
+      position: fixed;
+      display: block;
+      top: 0;
+      height: 100%;
+      width: 260px;
+      right: auto;
+      left: 0;
+      z-index: 1032;
+      visibility: visible;
+      overflow-y: visible;
+      padding: 0;
+      transition: all .5s cubic-bezier(.685, .0473, .346, 1);
+      -webkit-transform: translate3d(-260px, 0, 0);
+      transform: translate3d(-260px, 0, 0);
+    }
+    .main-container {
+      width: 100%;
+    }
+    arrow-hamburger-animation{
+      display: inline-block !important;
+    }
+  }
+
+}
+

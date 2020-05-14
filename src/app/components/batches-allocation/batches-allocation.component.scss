@@ -1,0 +1,11 @@
+:host {
+  .selected:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    background: #007bff;
+    width: 15px;
+    top: 0px;
+    left: 0px;
+  }
+}

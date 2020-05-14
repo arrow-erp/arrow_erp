@@ -1,5 +1,5 @@
-
-<arrow-header [menuData]="headerMenuData"></arrow-header>
+<arrow-side-bar [menuData]="headerMenuData" class="sidebar"></arrow-side-bar>
 <main class="main-container">
-    <router-outlet></router-outlet>
+  <arrow-hamburger-animation (click)="toggleMenu()"></arrow-hamburger-animation>
+  <router-outlet></router-outlet>
 </main>

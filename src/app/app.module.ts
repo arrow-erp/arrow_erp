@@ -14,6 +14,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import {AccordionModule} from 'ngx-bootstrap';
 import { FacultiesListComponent } from './pages/faculties-list/faculties-list.component';
 import { CourseListComponent } from './pages/course-list/course-list.component';
+import {BatchesListComponent} from './pages/batches-list/batches-list.component';
+import {DateSuffixPipe} from './components/date-suffix-pipe/date-suffix.pipe';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BatchesAllocationComponent } from './components/batches-allocation/batches-allocation.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { HamburgerAnimationComponent } from './components/hamburger-animation/hamburger-animation.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,12 @@ import { CourseListComponent } from './pages/course-list/course-list.component';
     HeaderComponent,
     StudentsListComponent,
     FacultiesListComponent,
-    CourseListComponent
+    CourseListComponent,
+    BatchesListComponent,
+    DateSuffixPipe,
+    BatchesAllocationComponent,
+    SideBarComponent,
+    HamburgerAnimationComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +43,8 @@ import { CourseListComponent } from './pages/course-list/course-list.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     ModalModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    TabsModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

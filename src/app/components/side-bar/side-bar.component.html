@@ -1,0 +1,11 @@
+<div class="sidebar-wrapper">
+  <div class="logo">
+    <img src="assets/logo.png">
+    <h6 class="text-center">Institution Management System</h6>
+  </div>
+  <ul class="list-group">
+    <li [routerLink]="[menuItem.route]" *ngFor="let menuItem of menuData" routerLinkActive="bg-light" class="list-group-item">
+        {{menuItem.label}}
+    </li>
+  </ul>
+</div>

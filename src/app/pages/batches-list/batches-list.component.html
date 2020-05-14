@@ -1,0 +1,186 @@
+<div class="container-fluid page">
+  <h4 class="page-title">
+    Arrow Batches List
+    <button class="btn btn-primary float-right"
+            (click)="addDetails(batchDetailsModal,arrowForm)">
+      Add Batch
+    </button>
+    <div class="clearfix"></div>
+  </h4>
+
+  <ul class="list-group" *ngIf="batchList | async as batchesList">
+    <li class="list-group-item mb-1" *ngFor="let batch of batchesList">
+      <div class="row">
+
+        <div class="col-md-4 col-xs-12 col-sm-12 text-truncate">
+          <i  class="fa fa-graduation-cap"></i> Batch Name : <span class="text-danger font-weight-bold">{{batch.batchName}}</span>
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-12 text-truncate">
+          <i class="fa fa-calendar-check-o"></i>from :<span class="text-danger font-weight-bold">{{batch.batchStartDate|date}} onwards</span>
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-12 text-truncate" *ngIf="batch.batchInterval==='daily'">
+          <i class="fa fa-clock-o mr-2"></i> {{batch.batchInterval}} :<span class="text-danger font-weight-bold">at {{batch.batchTime}}</span>
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-12 text-truncate" *ngIf="batch.batchInterval==='weekly'">
+          <i class="fa fa-clock-o mr-2"></i>Every {{batch.batchStartDate|date:'EEEE'}} :<span class="text-danger font-weight-bold">at {{batch.batchTime}}</span>
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-12 text-truncate" *ngIf="batch.batchInterval==='monthly'">
+          <i class="fa fa-clock-o mr-2"></i>Every Month on
+          {{batch.batchStartDate|date:'dd'}}<sup>{{(batch.batchStartDate | date: "d") | dateSuffix}}</sup>
+          <span class="text-danger font-weight-bold ml-2"> at {{batch.batchTime}}</span>
+        </div>
+
+        <div style="position: absolute;top: 0.5rem;right:  0.5rem;">
+          <button class="btn btn-primary btn-sm mr-3"
+                  (click)="editDetails(batch,batchDetailsModal,arrowForm)">
+            <i class="fa fa-edit"></i>
+          </button>
+          <button class="btn btn-danger btn-sm"
+                  (click)="deleteDetails(batch)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div bsModal
+       [config]="{ignoreBackdropClick:true,keyboard:false}"
+       #batchDetailsModal="bs-modal"
+       class="modal fade"
+       tabindex="-1"
+       role="dialog"
+       aria-labelledby="dialog-sizes-name1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">{{formTitle}}</h4>
+          <button type="button"
+                  class="close pull-right"
+                  (click)="batchDetailsModal.hide()"
+                  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal"
+                autocomplete="off"
+                style="overflow-y: auto;max-height: calc(100vh - 250px);"
+                #arrowForm="ngForm">
+            <div class="form-row">
+
+              <!--BatchName-->
+              <div class="form-group col-md-6">
+                <label>Batch Name <span class="text-danger font-weight-bold">*</span></label>
+                <input name="batchName"
+                       ngModel
+                       required
+                       autocomplete="off"
+                       type="text"
+                       placeholder="Batch Name"
+                       class="form-control">
+              </div>
+
+              <!--fees-->
+              <div class="form-group col-md-6">
+                <label>Batch Fees <span class="text-danger font-weight-bold">*</span></label>
+                <input name="fees"
+                       ngModel
+                       required
+                       autocomplete="off"
+                       type="number"
+                       placeholder="Fees"
+                       class="form-control">
+              </div>
+
+              <!--batchStartDate-->
+              <div class="form-group col-md-6">
+                <label>Batch Start Date <span class="text-danger font-weight-bold">*</span></label>
+                <input type="date"
+                       name="batchStartDate"
+                       ngModel
+                       required
+                       autocomplete="off"
+                       class="form-control">
+              </div>
+
+              <!--batchInterval-->
+              <div class="form-group col-md-6">
+                <label>Batch Interval <span class="text-danger font-weight-bold">*</span></label>
+                <select name="batchInterval"
+                        ngModel
+                        required
+                        autocomplete="off"
+                        class="form-control">
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+              </div>
+
+              <!--batchTime-->
+              <div class="form-group col-md-6">
+                <label>Batch Time <span class="text-danger font-weight-bold">*</span></label>
+                <input type="time"
+                       name="batchTime"
+                       ngModel
+                       required
+                       autocomplete="off"
+                       class="form-control">
+              </div>
+
+              <!--batchInterval-->
+              <div class="form-group col-md-6">
+                <label>Select Faculty for Batch <span class="text-danger font-weight-bold">*</span></label>
+                <select name="facultyId"
+                        ngModel
+                        required
+                        autocomplete="off"
+                        *ngIf="facultyList | async as facultyList"
+                        class="form-control">
+                  <option [ngValue]="faculty.id" *ngFor="let faculty of facultyList" value="daily">{{faculty.facultyName}}</option>
+                </select>
+              </div>
+
+              <!--course-->
+              <div class="form-group col-md-6">
+                <label>Select Course for Batch <span class="text-danger font-weight-bold">*</span></label>
+                <select name="courseId"
+                        ngModel
+                        required
+                        autocomplete="off"
+                        *ngIf="courseList | async as courseList"
+                        class="form-control">
+                  <option [ngValue]="course.id" *ngFor="let course of courseList" value="daily">{{course.courseName}}</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <button [disabled]="arrowForm.invalid"
+                        type="submit"
+                        (click)="saveDetails(arrowForm.value, batchDetailsModal, arrowForm)"
+                        class="float-right btn btn-primary">Save
+                </button>
+                <p class="text-danger float-left">* please provide all required fields</p>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showLoader"
+       class="fixed-top"
+       style="width: 100%;height: 100%;background-color: rgba(0,0,0,0.5);z-index: 200000000000;">
+    <label class="text-white"
+           style="position: absolute;top: 50%;width: 100%;text-align: center;">Please wait...</label>
+  </div>
+
+
+</div>

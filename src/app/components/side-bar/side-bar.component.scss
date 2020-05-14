@@ -1,0 +1,10 @@
+:host {
+  .sidebar-wrapper {
+    overflow-x: hidden;
+    height: 100vh;
+    position: relative;
+    width: 260px;
+    z-index: 4;
+    padding-bottom: 100px;
+  }
+}

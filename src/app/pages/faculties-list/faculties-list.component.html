@@ -1,5 +1,5 @@
-<div class="container">
-  <h4>
+<div class="container-fluid page">
+  <h4 class="page-title">
     Arrow Faculties List
     <button class="btn btn-primary float-right"
             (click)="addDetails(facultyDetailsModal,arrowForm)">
@@ -131,28 +131,6 @@
                 </div>
               </div>
 
-              <!--dateOfJoining-->
-              <div class="form-group col-md-6">
-                <label>Date of Joining <span class="font-weight-bold text-danger">*</span></label>
-                <input name="dateOfJoining"
-                       required
-                       ngModel
-                       autocomplete="off"
-                       type="date"
-                       class="form-control">
-              </div>
-
-              <!--timeSlot-->
-              <div class="form-group col-md-6">
-                <label>Time Slot</label>
-                <input name="timeSlot"
-                       ngModel
-                       autocomplete="off"
-                       type="time"
-                       class="form-control"
-                       name="appt">
-              </div>
-
               <!--phoneNumber-->
               <div class="form-group col-md-6">
                 <label>Phone number </label>
@@ -163,35 +141,6 @@
                        placeholder="Phone number"
                        class="form-control">
                 <span class="help-block">Your phone number won't be disclosed anywhere </span>
-              </div>
-
-              <!--selectCourse-->
-              <div class="form-group col-md-6">
-                <label>Select Course</label>
-                <select class="form-control"
-                        ngModel
-                        autocomplete="off"
-                        name="selectCourse">
-                  <option>Maya</option>
-                  <option>Vfx</option>
-                  <option>UX Designing</option>
-                  <option>Ui development</option>
-                </select>
-              </div>
-
-              <!--courseDuration-->
-              <div class="form-group col-md-6">
-                <label>Course Duration</label>
-                <select class="form-control"
-                        ngModel
-                        autocomplete="off"
-                        name="courseDuration">
-                  <option value="">Select...</option>
-                  <option value="1-Month">1 Month</option>
-                  <option value="2-Month">2 Month</option>
-                  <option value="3-Month">3 Month</option>
-                  <option value="4-Month">4 Month</option>
-                </select>
               </div>
 
               <!--Gender-->
