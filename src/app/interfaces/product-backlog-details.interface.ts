@@ -1,7 +1,7 @@
 export interface ProductBacklogDetailsInterface {
   id?: string;
   productBacklogName: string;
-  productBacklogRemarks: number;
+  productBacklogRemarks: string;
   priority: number;
   designingStatus: string;
   developmentStatus: string;

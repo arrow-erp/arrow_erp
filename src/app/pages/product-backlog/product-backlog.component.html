@@ -7,13 +7,19 @@
     <div class="clearfix"></div>
   </h4>
 
-  <ul class="list-group"
-      *ngIf="productBacklogList | async as productBacklogsList">
+  <ul class="list-group mb-5" (cdkDropListDropped)="drop($event)" cdkDropList *ngIf="productBacklogsList">
     <!--d-flex flex-sm-column  flex-column flex-md-row flex-lg-row  flex-xl-row-->
-    <li class="list-group-item mb-1" draggable="true"
-        *ngFor="let productBacklog of productBacklogsList;">
+    <li class="list-group-item mb-1"
+        [class.in-progress]="productBacklog.designingStatus=='Design In progress' || productBacklog.developmentStatus == 'Development In progress'"
+        [class.done]="productBacklog.designingStatus=='Design Completed' && productBacklog.developmentStatus == 'Development Completed'"
+        *ngFor="let productBacklog of productBacklogsList;" cdkDrag>
+
+      <div class="example-handle" cdkDragHandle>
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </div>
+
       <div class="row">
-        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 text-truncate font-weight-bold">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 text-truncate font-weight-bold pl-4">
           {{productBacklog.priority}}. {{productBacklog.productBacklogName}}
         </div>
         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 text-truncate font-weight-bold">
@@ -82,7 +88,7 @@
                        ngModel
                        required
                        autocomplete="off"
-                       type="text"
+                       type="number"
                        placeholder="Priority"
                        class="form-control">
               </div>

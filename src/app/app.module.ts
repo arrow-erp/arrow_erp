@@ -21,6 +21,7 @@ import { BatchesAllocationComponent } from './components/batches-allocation/batc
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HamburgerAnimationComponent } from './components/hamburger-animation/hamburger-animation.component';
 import { ProductBacklogComponent } from './pages/product-backlog/product-backlog.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ProductBacklogComponent } from './pages/product-backlog/product-backlog
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
     TabsModule.forRoot(),
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
