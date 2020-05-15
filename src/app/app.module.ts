@@ -22,6 +22,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HamburgerAnimationComponent } from './components/hamburger-animation/hamburger-animation.component';
 import { ProductBacklogComponent } from './pages/product-backlog/product-backlog.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { RegisterInstitutionComponent } from './pages/register-institution/register-institution.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     BatchesAllocationComponent,
     SideBarComponent,
     HamburgerAnimationComponent,
-    ProductBacklogComponent
+    ProductBacklogComponent,
+    RegisterInstitutionComponent
   ],
   imports: [
     BrowserModule,
