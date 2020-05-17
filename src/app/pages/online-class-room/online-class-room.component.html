@@ -1,0 +1,114 @@
+<div class="container-fluid page">
+  <h4 class="page-title">Arrow Online Class Room</h4>
+  <div class="d-flex flex-row flex-nowrap"
+       style="overflow-x: auto;">
+    <div class="card ml-1 mr-1"
+         style="min-width: 200px;"
+         *ngFor="let video of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]">
+      <svg class="bd-placeholder-img card-img-top"
+           width="100%"
+           height="100"
+           xmlns="http://www.w3.org/2000/svg"
+           preserveAspectRatio="xMidYMid slice"
+           focusable="false"
+           role="img"
+           aria-label="Placeholder: Image cap"><title>Placeholder</title>
+        <rect width="100%"
+              height="100%"
+              fill="#868e96"></rect>
+        <text x="20%"
+              y="50%"
+              fill="#dee2e6"
+              dy=".3em">Student Video
+        </text>
+      </svg>
+      <div class="card-body m-0 p-1">
+        <p class="card-text m-0 p-0 text-center">Student {{video}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-9">
+
+      <!--<div class="bg-light d-flex flex-column pt-2 position-absolute" style="width: 50px;height:100%;z-index: 100;top: 0;left: 10px;">
+        <button class="btn btn-primary m-1"><i class="fa fa-mouse-pointer"></i></button>
+        <button class="btn btn-primary m-1"><i class="fa fa-pencil"></i></button>
+        <button class="btn btn-primary m-1"><i class="fa fa-square"></i></button>
+        <button class="btn btn-primary m-1"><i class="fa fa-circle"></i></button>
+        <button class="btn btn-primary m-1"><i class="fa fa-text-width"></i></button>
+        <button class="btn btn-primary m-1"><i class="fa fa-eraser"></i></button>
+        <button class="btn btn-primary m-1"><i class="fa fa-arrows"></i></button>
+        <button class="btn btn-primary m-1"><i class="fa fa-th"></i></button>
+        <button class="btn btn-primary m-1"><i class="fa fa-file"></i></button>
+        <button class="btn btn-primary m-1"><i class="fa fa-folder"></i></button>
+        <button class="btn btn-primary m-1"><i class="fa fa-hand-paper-o"></i></button>
+      </div>-->
+
+      <canvas-whiteboard #canvasWhiteboard
+                         [drawButtonClass]="'drawButtonClass'"
+                         [drawButtonText]="'Draw'"
+                         [clearButtonClass]="'clearButtonClass'"
+                         [clearButtonText]="'Clear'"
+                         [undoButtonText]="'Undo'"
+                         [undoButtonEnabled]="true"
+                         [redoButtonText]="'Redo'"
+                         [redoButtonEnabled]="true"
+                         [colorPickerEnabled]="true"
+                         [saveDataButtonEnabled]="true"
+                         [saveDataButtonText]="'Save'"
+                         [lineWidth]="5"
+                         [strokeColor]="'rgb(0,0,0)'"
+                         [shouldDownloadDrawing]="true"
+                         (onBatchUpdate)="sendBatchUpdate($event)"
+                         (onClear)="onCanvasClear()"
+                         (onUndo)="onCanvasUndo($event)"
+                         (onRedo)="onCanvasRedo($event)">
+      </canvas-whiteboard>
+
+    </div>
+    <div class="col-3">
+      <tabset class="d-block bg-white p-2 border">
+        <tab heading="Chatroom"
+             class="bg-white border border-top-0 p-3"
+             style="overflow-y:hidden;min-height: calc(100vh - 270px);max-height: calc(100vh - 270px);">
+          <ul class="list-group"
+              style="overflow-y:auto;min-height: calc(100vh - 324px);max-height: calc(100vh - 324px);">
+            <li class="list-group-item border-0"
+                *ngFor="let student of  [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
+              <p class="p-0 m-0"
+                 [class.float-left]="student!=1"
+                 [class.float-right]="student==1">
+                {{student == 1 ? 'Teacher' : 'Student ' + student}}
+              </p><br>
+              <p class="alert alert-primary"
+                 [class.float-left]="student!=1"
+                 [class.float-right]="student==1">
+                {{student == 1 ? 'Welcome to my Class' : 'Thank you Teacher'}}
+              </p>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+          <div class="row">
+            <div class="input-group mb-3">
+              <input type="text"
+                     class="form-control"
+                     placeholder="Input Message">
+              <div class="input-group-append">
+                <span class="input-group-text"
+                      id="basic-addon2">Send</span>
+              </div>
+            </div>
+          </div>
+        </tab>
+        <tab heading="Student List"
+             class="bg-white border border-top-0 p-3"
+             style="overflow-y:auto;min-height: calc(100vh - 270px);max-height: calc(100vh - 270px);">
+          <ul class="list-group">
+            <li class="list-group-item"
+                *ngFor="let student of  [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">Student {{student}}</li>
+          </ul>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>
