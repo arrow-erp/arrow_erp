@@ -23,6 +23,9 @@ import { HamburgerAnimationComponent } from './components/hamburger-animation/ha
 import { ProductBacklogComponent } from './pages/product-backlog/product-backlog.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { RegisterInstitutionComponent } from './pages/register-institution/register-institution.component';
+import { ClassRoomComponent } from './components/class-room/class-room.component';
+import { OnlineClassRoomComponent } from './pages/online-class-room/online-class-room.component';
+import {CanvasWhiteboardModule} from 'ng2-canvas-whiteboard';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { RegisterInstitutionComponent } from './pages/register-institution/regis
     SideBarComponent,
     HamburgerAnimationComponent,
     ProductBacklogComponent,
-    RegisterInstitutionComponent
+    RegisterInstitutionComponent,
+    ClassRoomComponent,
+    OnlineClassRoomComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +56,7 @@ import { RegisterInstitutionComponent } from './pages/register-institution/regis
     AccordionModule.forRoot(),
     TabsModule.forRoot(),
     DragDropModule,
+    CanvasWhiteboardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

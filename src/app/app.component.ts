@@ -16,6 +16,7 @@ export class AppComponent {
     {label: 'ACCOUNT MAINTENANCE', id: 'accountMaintenance', route: 'account-maintenance'},
     {label: 'PRODUCT BACKLOG', id: 'productBacklog', route: 'product-backlog'},
     {label: 'Register Institution', id: 'registerInstitution', route: 'register-institution'},
+    {label: 'Online Class Room', id: 'onlineClassRoom', route: 'online-class-room'},
   ];
 
   toggleMenu() {
